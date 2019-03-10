@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
     public float tilt;
     public Boundary boundary;
     private Rigidbody rb;
+    private AudioSource audioSource;
 
     public GameObject shot;
     public Transform shotSpawn;
@@ -23,6 +24,7 @@ public class PlayerController : MonoBehaviour
 
     void Start ()
     {
+        audioSource = GetComponent<AudioSource>();
         rb = GetComponent<Rigidbody>();
     }
 
@@ -32,6 +34,7 @@ public class PlayerController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            audioSource.Play();
         }
     }
 
